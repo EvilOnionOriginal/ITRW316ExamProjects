@@ -1,0 +1,17 @@
+<h1>
+  Welcome - Start by adding a couple of processes.
+</h1>
+<hr>
+  User name:<input type="text" [(ngModel)]="currentUser">
+<hr>
+<button (click)="AddNewProcess()">Add Process</button>
+<hr>
+<div *ngFor="let process of processes">
+  Name:<input type="text" [(ngModel)]="process.Name">
+  <br>
+  Arrival:<input type="text" [(ngModel)]="process.Arrival">
+  <br>
+  Length:<input type="text" [(ngModel)]="process.Length">
+  <hr>
+</div>
+<button *ngIf="processes.length > 0 && currentUser !== ''" (click)="Submit()">Submit</button>

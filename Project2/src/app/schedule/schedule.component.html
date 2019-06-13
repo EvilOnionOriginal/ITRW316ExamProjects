@@ -1,0 +1,32 @@
+<h1>
+  Scheduling - Choose time quantums.
+</h1>
+<hr>
+  User name:{{currentUser}}
+<hr>
+<button (click)="LoadProcesses()">Load Processes</button>
+<hr>
+<div *ngFor="let process of processes">
+  Name:{{process.Name}}
+  Arrival:{{process.Arrival}}
+  Length:{{process.Length}}
+</div>
+<hr>
+<div>
+  Time quantum 1: {{timeQuantum1}}<input type="range" min="1" [max]="timeQuantum2" [(ngModel)]="timeQuantum1">
+</div>
+<div>
+  Time quantum 2: {{timeQuantum2}}<input type="range" [min]="timeQuantum1" [max]="timeQuantum3" [(ngModel)]="timeQuantum2">
+</div>
+<div>
+  Time quantum 3: {{timeQuantum3}}<input type="range" [min]="timeQuantum2" max="6" [(ngModel)]="timeQuantum3">
+</div>
+<hr>
+<button (click)="ShowSchedule()">ShowSchedule</button>
+<hr>
+<div *ngIf="processRan.length !== 0"></div>
+<button *ngFor="let pran of processRan">{{pran}}</button>
+<hr>
+<div>{{scheduleMessage}}</div>
+
+

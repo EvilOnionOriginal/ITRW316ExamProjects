@@ -1,0 +1,32 @@
+<h1>
+  Welcome - Enter memory for OS and page frame size.
+</h1>
+<hr>
+<button (click)="GetRAM()">Read System RAM</button>
+<hr>
+<div *ngIf="serverMemory">{{serverMemory}} MB</div>
+<hr>
+<div>
+  Memory for OS: {{osMemory}} MB <br> <input type="range" step="64" min="512" [max]="serverMemory / 4" [(ngModel)]="osMemory" style="width: 100%">
+</div>
+<div>
+  Page frame size: {{frameSize}} KB <br> <input type="range" step="1024" min="1024" max="32768" [(ngModel)]="frameSize" style="width: 100%">
+</div>
+<hr>
+<button (click)="Initialize()">Initialize frames.</button>
+<button (click)="Randomize()">Randomize frames.</button>
+<hr>
+<div>
+  Choose page to check: {{chooseFrame}}
+  <br>
+  <input type="range" min="0" [max]="frames.length * 2" [(ngModel)]="chooseFrame" style="width: 100%">
+  <br>
+  <button (click)="CheckPage()">Check page.</button>
+  <br>
+  {{pageMessage}}
+</div>
+<hr>
+<div>
+  Frames: {{frames.length}}
+</div>
+<button *ngFor="let frame of frames; let i = index" [style.color]="currentFrame == i ? 'blue' : 'black' ">{{i}}:{{frame}}</button>
